@@ -1,0 +1,18 @@
+{
+  "name": "nksoftalmaceneroservices",
+  "version": "1.0.0",
+  "description": "servicios rest NksoftAlmacenero",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "nksoft"
+  ],
+  "author": "Josbla jenkins (José Zavala)",
+  "license": "CC0-1.0",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4"
+  }
+}
