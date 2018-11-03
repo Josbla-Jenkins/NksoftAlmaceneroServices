@@ -11,7 +11,7 @@ class Configuration {
         if (process.env.NODE_ENV === 'develop') { 
             return urlDB = 'mongodb://localhost:27017/Almacenero';
         } else {
-            return urlDB = 'mongodb://nksoft-admin:nksoftdevelop2018@ds151383.mlab.com:51383/nksoft-alamcenero-prototype';
+            return urlDB = process.env.MONGO_URI;
         }
     }
 
