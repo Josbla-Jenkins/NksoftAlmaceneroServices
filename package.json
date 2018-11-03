@@ -1,9 +1,13 @@
 {
   "name": "nksoftalmaceneroservices",
   "version": "1.0.0",
+  "engines": {
+    "node": "10.11.0"
+  },
   "description": "servicios rest NksoftAlmacenero",
   "main": "index.js",
   "scripts": {
+    "start": "node server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [

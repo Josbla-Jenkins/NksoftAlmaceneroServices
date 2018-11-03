@@ -17,7 +17,7 @@ class Server {
     }
 
     upServer(){
-        mongoose.connect('mongodb://localhost:27017/Almacenero', { useNewUrlParser: true }, (err, res)=>{
+        mongoose.connect(process.env.URLDB, { useNewUrlParser: true }, (err, res)=>{
             if (err) throw err;
 
             console.log('Database Online!!');
