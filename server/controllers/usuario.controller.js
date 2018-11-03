@@ -8,6 +8,15 @@ class UsuarioCOntroller{
     constructor(){
         this.app = express();
 
+        this.app.get('/', (req, res)=>{
+            res.json(
+                {
+                    ok: true,
+                    message:'its works!!'
+                }
+            );
+        })
+
         this.app.get('/users',(req, res)=>{
             let start = req.query.start || 0;
             start = Number(start);
