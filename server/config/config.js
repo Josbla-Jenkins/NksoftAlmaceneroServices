@@ -8,7 +8,7 @@ class Configuration {
     //database configuration
     dbConfigUrl() {
         let urlDB;
-        if (process.env.ENV === 'testing') { 
+        if (process.env.NODE_ENV === 'develop') { 
             return urlDB = 'mongodb://localhost:27017/Almacenero';
         } else {
             return urlDB = 'mongodb://nksoft-admin:nksoftdevelop2018@ds151383.mlab.com:51383/nksoft-alamcenero-prototype';
@@ -19,8 +19,8 @@ class Configuration {
 //port
 process.env.PORT = process.env.PORT || 4300;
 //envirioment
-process.env.ENV = process.env.ENV || 'testing';
-console.log('EL ENTORNO ES: ', process.env.ENV);
+process.env.NODE_ENV = process.env.NODE_ENV || 'develop';
+console.log('EL ENTORNO ES: ', process.env.NODE_ENV);
 
 const configuration = new Configuration();
 //Url database intance 
