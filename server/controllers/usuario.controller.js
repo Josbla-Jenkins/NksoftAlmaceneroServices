@@ -2,22 +2,23 @@ const express = require('express');
 const UserModel = require('./../models/user.model');
 const bcrypt = require('bcrypt');
 const _ = require('underscore');
+const { verifyToken, verifyAcountOwner } = require('./../midleware/authenticate');
 
 class UsuarioCOntroller{
 
     constructor(){
         this.app = express();
 
-        this.app.get('/', (req, res)=>{
-            res.json(
-                {
-                    ok: true,
-                    message:'its works!!'
-                }
-            );
-        })
+        // this.app.get('/', (req, res)=>{
+        //     res.json(
+        //         {
+        //             ok: true,
+        //             message:'its works!!'
+        //         }
+        //     );
+        // });
 
-        this.app.get('/users',(req, res)=>{
+        this.app.get('/users', verifyToken, (req, res)=>{
             let start = req.query.start || 0;
             start = Number(start);
             let paginator = req.query.paginator || 5;
@@ -50,7 +51,7 @@ class UsuarioCOntroller{
             res.json({message : 'get usuer'});
         });
 
-        this.app.post('/user',(req, res)=>{
+        this.app.post('/user', verifyToken, (req, res)=>{
             let body = req.body;
             let user = new UserModel(
                 {
@@ -79,7 +80,7 @@ class UsuarioCOntroller{
             }); 
         });
 
-        this.app.put(`/user/:id`,(req, res)=>{
+        this.app.put(`/user/:id`, [verifyToken, verifyAcountOwner], (req, res)=>{
             let id = req.params.id;
             let body = _.pick(req.body, ['userName','email','img','role','status']);
 
@@ -101,7 +102,7 @@ class UsuarioCOntroller{
             });
         });
 
-        this.app.delete(`/user/:id`,(req, res)=>{
+        this.app.delete(`/user/:id`, [verifyToken, verifyAcountOwner], (req, res)=>{
             let id = req.params.id;
             let changeStatus = {
                 status: false

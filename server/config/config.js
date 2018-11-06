@@ -21,6 +21,10 @@ process.env.PORT = process.env.PORT || 4300;
 //envirioment
 process.env.NODE_ENV = process.env.NODE_ENV || 'develop';
 console.log('EL ENTORNO ES: ', process.env.NODE_ENV);
+//token lifetime
+process.env.TOKEN_LIFE = 60 * 60 * 24 * 30;
+//token seed
+process.env.SEED = process.env.SEED || 'nksoft-sign-develop';
 
 const configuration = new Configuration();
 //Url database intance 
