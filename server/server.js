@@ -13,6 +13,13 @@ class Server {
     serverMidlewares(){
         this.app.use(bodyParser.urlencoded({extended: false}));
         this.app.use(bodyParser.json());
+        this.app.use((req, res, next)=>{
+            res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
+            res.setHeader('Access-Control-Allow-Methods', 'GET, HEAD, POST, PUT, DELETE');
+            res.setHeader("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, X-Requested-With");
+            res.setHeader('Access-Control-Allow-Credentials', false);
+            next();
+        });
         //Configuracion global de rutas
         this.app.use(require('./controllers/index'));
     }

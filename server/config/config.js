@@ -30,4 +30,7 @@ const configuration = new Configuration();
 //Url database intance 
 process.env.URLDB = configuration.dbConfigUrl();
 
+//Google client id
+process.env.CLIENT_ID = process.env.CLIENT_ID || '295664713247-jac7899ug6fkdhm6o9sr1i7dm3pk40l7.apps.googleusercontent.com'
+
 module.exports = configuration;
